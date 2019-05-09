@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.marcos.controlador.AlumnoBean;
 import com.marcos.modelo.util.BDConect;
 
 public class AlumnosDataRead {
@@ -14,6 +15,10 @@ public class AlumnosDataRead {
 	
 	
 	public ArrayList<AlumnoBean> getAlumnos() {
+		
+		
+		ArrayList<AlumnoBean> listaDevolver = new ArrayList<AlumnoBean>();
+		
 		
 		// preparo la conexion
 		Connection conexion = BDConect.getConexion(); 
@@ -26,19 +31,24 @@ public class AlumnosDataRead {
 			// ejecuto la query
 	       	ResultSet resultadoSQL = stmt.executeQuery();
 	       	
-	       	
+
 	       	// recorrer el resultado
 	    	while (resultadoSQL.next()) {
 	    		
-	    		System.out.print(resultadoSQL.getInt("idalumno")+" ");
-	    		System.out.print(resultadoSQL.getString("nombre")+" ");
-	    		System.out.println(resultadoSQL.getString("dnis"));
+		       	AlumnoBean alumno = new AlumnoBean();
+	    		alumno.setIdalumno(resultadoSQL.getInt("idalumno"));
+	    		alumno.setNombre(resultadoSQL.getString("nombre"));
+	    		alumno.setDni(resultadoSQL.getString("dni"));
+	    		
+	    		listaDevolver.add(alumno);
 	    	}
        	}
        	catch(Exception e) {
        		
        		e.printStackTrace();
        	}
+       	
+       	return listaDevolver;
 		
 	}
 	

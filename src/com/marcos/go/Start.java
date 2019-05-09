@@ -1,5 +1,8 @@
 package com.marcos.go;
 
+import java.util.ArrayList;
+
+import com.marcos.controlador.AlumnoBean;
 import com.marcos.modelo.AlumnosDataRead;
 
 public class Start {
@@ -9,8 +12,10 @@ public class Start {
 
 		
 		AlumnosDataRead adr = new AlumnosDataRead();
-		adr.getAlumnos();
+		ArrayList<AlumnoBean> misAlumnos = adr.getAlumnos();
 		
+		
+		System.out.println(misAlumnos);
 	}
 
 }
