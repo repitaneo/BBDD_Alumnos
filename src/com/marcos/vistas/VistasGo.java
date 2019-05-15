@@ -40,14 +40,17 @@ public class VistasGo {
 			switch(opcion) {
 			
 				case 1:
+						VistaCreate vc = new VistaCreate();
+						vc.create();
+						break;
 				case 2: 
+						VistaUpdate vu = new VistaUpdate();
+						vu.update(lista);
+						break;					
 				case 3: 
 						VistaDelete vd = new VistaDelete();
 						vd.delete(lista);
 			}
-			
-			
-			
 		}while(opcion!=0);
 		
 		
