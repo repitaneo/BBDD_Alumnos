@@ -2,8 +2,7 @@ package com.marcos.modelo.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 
 public class BDConect {
 
@@ -21,6 +20,8 @@ public class BDConect {
 			String dbURL = "jdbc:mysql://localhost:3306/pruebas" 
 				    + "?verifyServerCertificate=true" 
 				    + "&useSSL=false"
+				    + "&allowPublicKeyRetrieval=true"
+				    + "&serverTimezone=UTC"
 				    + "&requireSSL=false";
             conexion = DriverManager.getConnection(dbURL, user, pass);
 		} 
