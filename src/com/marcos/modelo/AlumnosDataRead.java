@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.marcos.controlador.AlumnoBean;
+import com.marcos.controlador.AlumnosBO;
 import com.marcos.modelo.util.BDConect;
 
 public class AlumnosDataRead {
@@ -13,10 +14,10 @@ public class AlumnosDataRead {
 	
 	
 	
-	public ArrayList<AlumnoBean> getAlumnos() {
+	public AlumnosBO getAlumnos() {
 		
 		
-		ArrayList<AlumnoBean> listaDevolver = new ArrayList<AlumnoBean>();
+		AlumnosBO listaDevolver = new AlumnosBO();
 		
 		
 		// preparo la conexion
@@ -39,7 +40,7 @@ public class AlumnosDataRead {
 	    		alumno.setNombre(resultadoSQL.getString("nombre"));
 	    		alumno.setDni(resultadoSQL.getString("dni"));
 	    		
-	    		listaDevolver.add(alumno);
+	    		listaDevolver.addAlumno(alumno);
 	    	}
        	}
        	catch(Exception e) {
@@ -48,44 +49,6 @@ public class AlumnosDataRead {
        	}
        	
        	return listaDevolver;
-		
 	}
 	
-	
-	
-/*		
-		
-		
-		
-       	
-       	// ejeculo la sentencia
-		try {
-			stmt = conexion.prepareStatement("SELECT * FROM cines");
-	       	ResultSet rs = stmt.executeQuery();
-	       	while (rs.next()) {
-	       		
-	       		CineBean cine = new CineBean();
-	       		cine.setIdCine(rs.getInt("idcines"));
-	       		cine.setNombre(rs.getString("nombre"));
-	       		cine.setResponsable(rs.getString("responsable"));
-	       		cine.setTelefono(rs.getString("telefono"));
-	       		cine.setDireccion(rs.getString("direccion"));
-	       		
-	       		
-	       		PeliculasData peliculaData = new PeliculasData();
-	       		peliculaData.getPeliculas(cine);
-	       		
-	       		devolver.add(cine);
-	       	} 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		return devolver;
-	}
-
-*/	
-	
-	
-
 }

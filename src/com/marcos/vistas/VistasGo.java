@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.marcos.controlador.AlumnoBean;
+import com.marcos.controlador.AlumnosBO;
 import com.marcos.modelo.AlumnosDataRead;
 
 public class VistasGo {
@@ -15,13 +16,15 @@ public class VistasGo {
 		do {
 			
 			AlumnosDataRead adr = new AlumnosDataRead();
-			ArrayList<AlumnoBean> lista = adr.getAlumnos();
+			AlumnosBO lista = adr.getAlumnos();
 			
 			System.out.println("\n\n");
-			int i = 0;
-			for(AlumnoBean alumno:lista) {
+			for(int i=0;i<lista.getCuantos();i++) {
 				
-				System.out.print("["+(i++)+"] ");
+				AlumnoBean alumno = lista.getAlumnoPorPosicion(i);
+				
+				System.out.print("["+i+"] (");
+				System.out.print(alumno.getIdalumno()+") ");
 				System.out.print(alumno.getNombre()+" ");
 				System.out.println(alumno.getDni());
 			}
